@@ -16,6 +16,8 @@ Use [the changelog guidelines](https://git.io/polaris-changelog-guidelines) to f
 
 ### Bug fixes
 
+Constrain DropZone height based on inherited wrapper height (#1138)[https://github.com/Shopify/polaris-react/pull/1138]
+
 ### Documentation
 
 ### Development workflow
