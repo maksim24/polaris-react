@@ -27,7 +27,8 @@
     "Common": {
       "checkbox": "チェックボックス",
       "undo": "元に戻す",
-      "cancel": "キャンセル"
+      "cancel": "キャンセル",
+      "newWindowAccessibilityHint": "(新しいウィンドウを開く)"
     },
     "ContextualSaveBar": {
       "save": "保存する",
@@ -99,6 +100,11 @@
     "Modal": {
       "iFrameTitle": "ボディのマークアップ",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "iconWarningMessage": "アイコンプロップはページから削除されました。代わりに、Shopifyパートナーダッシュボードの「アプリ設定」セクションにアプリケーションアイコンをアップロードします。"
+      }
     },
     "Pagination": {
       "previous": "前へ",
@@ -187,6 +193,7 @@
       "ariaLabel": "{children}を削除する"
     },
     "TextField": {
+      "characterCount": "{count}文字",
       "characterCountWithMaxLength": "{count}/{limit}文字使用"
     }
   }
