@@ -27,7 +27,8 @@
     "Common": {
       "checkbox": "caixa de seleção",
       "undo": "Desfazer",
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "newWindowAccessibilityHint": "(abre uma nova janela)"
     },
     "ContextualSaveBar": {
       "save": "Salvar",
@@ -100,6 +101,11 @@
       "iFrameTitle": "marcação de corpo",
       "modalWarning": "Essas propriedades obrigatórias estão faltando no Modal: {missingProps}"
     },
+    "Page": {
+      "Header": {
+        "iconWarningMessage": "O prop do ícone foi removido da página. Como alternativa, carregue um ícone de aplicativo na seção \"Configuração do aplicativo\" do painel do Programa de Parcerias da Shopify."
+      }
+    },
     "Pagination": {
       "previous": "Anterior",
       "next": "Próximo",
@@ -156,9 +162,39 @@
         "dateValuePlaceholder": "AAAA-MM-DD",
         "SelectOptions": {
           "PastWeek": "na última semana",
-          "PastMonth": "no último mês"
+          "PastMonth": "no último mês",
+          "PastQuarter": "nos últimos 3 meses",
+          "PastYear": "no último ano",
+          "ComingWeek": "na próxima semana",
+          "ComingMonth": "no próximo mês",
+          "ComingQuarter": "nos próximos 3 meses",
+          "ComingYear": "no próximo ano",
+          "OnOrBefore": "em ou antes de",
+          "OnOrAfter": "em ou depois de"
+        },
+        "FilterLabelForValue": {
+          "past_week": "na última semana",
+          "past_month": "no último mês",
+          "past_quarter": "nos últimos 3 meses",
+          "past_year": "no último ano",
+          "coming_week": "na próxima semana",
+          "coming_month": "no próximo mês",
+          "coming_quarter": "nos próximos 3 meses",
+          "coming_year": "no próximo ano",
+          "on_or_before": "antes de {date}",
+          "on_or_after": "depois de {date}"
         }
       }
+    },
+    "Spinner": {
+      "warningMessage": "A cor {color} não é para ser usada spinners de {size}. As cores disponíveis em grandes spinners são: {colors}"
+    },
+    "Tag": {
+      "ariaLabel": "Remover {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} caracteres",
+      "characterCountWithMaxLength": "{count} de {limit} caracteres utilizados"
     }
   }
 }
