@@ -2,14 +2,21 @@ import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
-
+import {IconableAction} from '../../../types';
 import Icon from '../Icon';
 import Popover from '../Popover';
 
 import {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 
-import {List, Panel, Tab, TabMeasurer, TabMeasurements} from './components';
+import {
+  List,
+  Panel,
+  Tab,
+  TabMeasurer,
+  TabMeasurements,
+  Action,
+} from './components';
 
 import styles from './Tabs.scss';
 
@@ -22,6 +29,8 @@ export interface Props {
   tabs: TabDescriptor[];
   /** Fit tabs to container */
   fitted?: boolean;
+  /** Collection of secondary actions */
+  action: IconableAction[];
   /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void;
 }
@@ -107,41 +116,49 @@ export default class Tabs extends React.PureComponent<Props, State> {
       </button>
     );
 
+    const actionMarkup = this.renderAction();
+
     return (
       <div>
-        <ul
-          role="tablist"
-          className={classname}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onKeyDown={handleKeyDown}
-          onKeyUp={this.handleKeyPress}
-        >
-          {tabsMarkup}
-          <li role="presentation" className={disclosureTabClassName}>
-            <Popover
-              preferredPosition="below"
-              activator={activator}
-              active={disclosureActivatorVisible && showDisclosure}
-              onClose={this.handleClose}
+        <div className={styles.HoldingContainer}>
+          <div className={styles.MeasuredContainer}>
+            <ul
+              role="tablist"
+              className={classname}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              onKeyDown={handleKeyDown}
+              onKeyUp={this.handleKeyPress}
             >
-              <List
-                focusIndex={hiddenTabs.indexOf(tabToFocus)}
-                disclosureTabs={disclosureTabs}
-                onClick={this.handleTabClick}
-                onKeyPress={this.handleKeyPress}
-              />
-            </Popover>
-          </li>
-        </ul>
-        <TabMeasurer
-          tabToFocus={tabToFocus}
-          activator={activator}
-          selected={selected}
-          tabs={tabs}
-          siblingTabHasFocus={tabToFocus > -1}
-          handleMeasurement={this.handleMeasurement}
-        />
+              {tabsMarkup}
+              <li role="presentation" className={disclosureTabClassName}>
+                <Popover
+                  preferredPosition="below"
+                  activator={activator}
+                  active={disclosureActivatorVisible && showDisclosure}
+                  onClose={this.handleClose}
+                >
+                  <List
+                    focusIndex={hiddenTabs.indexOf(tabToFocus)}
+                    disclosureTabs={disclosureTabs}
+                    onClick={this.handleTabClick}
+                    onKeyPress={this.handleKeyPress}
+                  />
+                </Popover>
+                <div className={styles.ActionTab}>{actionMarkup}</div>
+              </li>
+            </ul>
+            <TabMeasurer
+              tabToFocus={tabToFocus}
+              activator={activator}
+              action={actionMarkup}
+              selected={selected}
+              tabs={tabs}
+              siblingTabHasFocus={tabToFocus > -1}
+              handleMeasurement={this.handleMeasurement}
+            />
+          </div>
+        </div>
         {panelMarkup}
       </div>
     );
@@ -308,8 +325,19 @@ export default class Tabs extends React.PureComponent<Props, State> {
     const selectedIndex = tabs.indexOf(tab);
     onSelect(selectedIndex);
   };
-}
 
+  private renderAction = () => {
+    const {action = []} = this.props;
+
+    if (action.length === 0) {
+      return null;
+    }
+
+    const renderActionMarkup = action.length > 0 ? actionFrom(action) : null;
+
+    return <span>{renderActionMarkup}</span>;
+  };
+}
 function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   const {key} = event;
 
@@ -322,4 +350,14 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     event.preventDefault();
     event.stopPropagation();
   }
+}
+
+function actionFrom(
+  actions: IconableAction[] = [],
+): ReadonlyArray<JSX.Element> {
+  return actions.map(({content, ...action}, index) => (
+    <div key={`Action-${content || index}`}>
+      <Action {...action}>{content}</Action>
+    </div>
+  ));
 }

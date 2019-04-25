@@ -19,6 +19,7 @@ export interface Props {
   tabToFocus: number;
   siblingTabHasFocus: boolean;
   activator: React.ReactElement<{}>;
+  action: JSX.Element | null;
   selected: number;
   tabs: TabDescriptor[];
   handleMeasurement(measurements: TabMeasurements): void;
@@ -48,6 +49,7 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
       selected,
       tabs,
       activator,
+      action,
       tabToFocus,
       siblingTabHasFocus,
     } = this.props;
@@ -76,6 +78,7 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
         <EventListener event="resize" handler={this.handleMeasurement} />
         {tabsMarkup}
         {activator}
+        {action}
       </div>
     );
   }
@@ -99,7 +102,6 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
       return node.getBoundingClientRect().width;
     });
     const disclosureWidth = hiddenTabWidths.pop() as number;
-
     handleMeasurement({
       containerWidth,
       disclosureWidth,

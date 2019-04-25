@@ -2,6 +2,19 @@ $item-min-height: rem(16px);
 $item-min-width: rem(50px);
 $item-vertical-padding: $item-min-height / 2;
 $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
+$action-horizontal-padding: (1.5 * spacing(tight));
+
+// .HoldingContainer {
+//   display: inline-flex;
+// }
+
+// .MeasuredContainer {
+//   display: flex;
+//   height: 100%;
+//   flex-direction: column;
+//   flex-grow: 1;
+// }
+
 
 .Tabs {
   display: flex;
@@ -79,6 +92,7 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
   }
 
   &.Tab-selected {
+
     // stylelint-disable-next-line selector-max-class
     .Title {
       border-bottom: border-width(thicker) solid color('indigo');
@@ -157,6 +171,13 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 
 .DisclosureTab-visible {
   display: flex;
+}
+
+.ActionTab {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
 }
 
 .DisclosureActivator {
