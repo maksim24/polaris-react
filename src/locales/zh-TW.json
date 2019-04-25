@@ -27,7 +27,8 @@
     "Common": {
       "checkbox": "核取方塊",
       "undo": "復原",
-      "cancel": "取消"
+      "cancel": "取消",
+      "newWindowAccessibilityHint": "(開啟新視窗)"
     },
     "ContextualSaveBar": {
       "save": "儲存",
@@ -99,6 +100,11 @@
     "Modal": {
       "iFrameTitle": "本文標記",
       "modalWarning": "互動視窗內缺少以下必要屬性：{missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "iconWarningMessage": "圖示工具已從頁面移除。請改在 Shopify 合作夥伴控制面板的「應用程式設定」區段中上傳應用程式圖示。"
+      }
     },
     "Pagination": {
       "previous": "上一頁",
@@ -187,6 +193,7 @@
       "ariaLabel": "移除 {children}"
     },
     "TextField": {
+      "characterCount": "{count} 人物",
       "characterCountWithMaxLength": "已使用 {count} 個字元，上限為 {limit} 個字元"
     }
   }
