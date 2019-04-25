@@ -27,7 +27,8 @@
     "Common": {
       "checkbox": "复选框",
       "undo": "撤销",
-      "cancel": "取消"
+      "cancel": "取消",
+      "newWindowAccessibilityHint": "（打开新窗口）"
     },
     "ContextualSaveBar": {
       "save": "保存",
@@ -99,6 +100,11 @@
     "Modal": {
       "iFrameTitle": "正文标记",
       "modalWarning": "模态缺少这些必需的属性：{missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "iconWarningMessage": "已从页面删除该图标道具。请改为在 Shopify 合作伙伴仪表板“应用设置”部分上传应用程序图标。"
+      }
     },
     "Pagination": {
       "previous": "上一页",
@@ -187,6 +193,7 @@
       "ariaLabel": "删除 {children}"
     },
     "TextField": {
+      "characterCount": "{count} 个字符",
       "characterCountWithMaxLength": "已使用的字符数未 {count}，限制为 {limit}"
     }
   }
