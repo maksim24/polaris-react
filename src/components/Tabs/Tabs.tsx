@@ -30,13 +30,14 @@ export interface Props {
   /** Fit tabs to container */
   fitted?: boolean;
   /** Collection of secondary actions */
-  action: IconableAction[];
+  action?: IconableAction[];
   /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void;
 }
 
 export interface State {
   disclosureWidth: number;
+  actionWidth: number;
   tabWidths: number[];
   visibleTabs: number[];
   hiddenTabs: number[];
@@ -49,11 +50,12 @@ export default class Tabs extends React.PureComponent<Props, State> {
   static Panel = Panel;
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const {disclosureWidth, tabWidths, containerWidth} = prevState;
+    const {disclosureWidth, actionWidth, tabWidths, containerWidth} = prevState;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
       nextProps.tabs,
       nextProps.selected,
       disclosureWidth,
+      actionWidth,
       tabWidths,
       containerWidth,
     );
@@ -67,6 +69,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
 
   state: State = {
     disclosureWidth: 0,
+    actionWidth: 0,
     containerWidth: Infinity,
     tabWidths: [],
     visibleTabs: [],
@@ -145,9 +148,10 @@ export default class Tabs extends React.PureComponent<Props, State> {
                     onKeyPress={this.handleKeyPress}
                   />
                 </Popover>
-                <div className={styles.ActionTab}>{actionMarkup}</div>
               </li>
+              <li className={styles.ActionTab}>{actionMarkup}</li>
             </ul>
+
             <TabMeasurer
               tabToFocus={tabToFocus}
               activator={activator}
@@ -295,11 +299,13 @@ export default class Tabs extends React.PureComponent<Props, State> {
       hiddenTabWidths: tabWidths,
       containerWidth,
       disclosureWidth,
+      actionWidth,
     } = measurements;
     const {visibleTabs, hiddenTabs} = getVisibleAndHiddenTabIndices(
       tabs,
       selected,
       disclosureWidth,
+      actionWidth,
       tabWidths,
       containerWidth,
     );
@@ -309,6 +315,7 @@ export default class Tabs extends React.PureComponent<Props, State> {
       visibleTabs,
       hiddenTabs,
       disclosureWidth,
+      actionWidth,
       containerWidth,
       tabWidths,
     });

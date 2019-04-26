@@ -4,18 +4,6 @@ $item-vertical-padding: $item-min-height / 2;
 $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 $action-horizontal-padding: (1.5 * spacing(tight));
 
-// .HoldingContainer {
-//   display: inline-flex;
-// }
-
-// .MeasuredContainer {
-//   display: flex;
-//   height: 100%;
-//   flex-direction: column;
-//   flex-grow: 1;
-// }
-
-
 .Tabs {
   display: flex;
   margin: 0;
