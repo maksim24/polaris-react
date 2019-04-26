@@ -12,7 +12,7 @@ import styles from '../../Tabs.scss';
 export interface TabMeasurements {
   containerWidth: number;
   disclosureWidth: number;
-  actionWidth: number | null;
+  actionWidth: number;
   hiddenTabWidths: number[];
 }
 
@@ -102,14 +102,10 @@ export default class TabMeasurer extends React.PureComponent<Props, never> {
     const hiddenTabWidths = hiddenTabNodesArray.map((node) => {
       return node.getBoundingClientRect().width;
     });
-    console.log('action', action);
 
     const actionWidth = action ? (hiddenTabWidths.pop() as number) : 0;
 
     const disclosureWidth = hiddenTabWidths.pop() as number;
-
-    console.log('actionWidth', actionWidth);
-    console.log('disclosureWidth', disclosureWidth);
 
     handleMeasurement({
       containerWidth,

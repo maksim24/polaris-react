@@ -47,7 +47,6 @@ export default function Action({
 
   return (
     <button
-      tabIndex={-1}
       key={children}
       className={styles.Action}
       onClick={onAction}
