@@ -1,11 +1,12 @@
 import PlayPage from './Page';
 import PlayCardForm from './CardForm';
 import PlayCustomerList from './CustomerList';
+import PlayToggleButton from './ToggleButton';
+import PlayPopover from './Popover';
 import {UIState as PlayUIState} from './UIState';
-import {
-  ToggleState,
-  decoratedPlayPopover,
-  decoratedPlayToggleButton,
+import PlayToggleState, {
+  PlayToggleStateConsumer,
+  PlayToggleStateProvider,
 } from './ToggleState';
 
 export {
@@ -13,9 +14,11 @@ export {
   PlayCardForm,
   PlayCustomerList,
   PlayUIState as PlayState,
-  ToggleState as PlayToggleState,
-  decoratedPlayPopover as PlayPopover,
-  decoratedPlayToggleButton as PlayToggleButton,
+  PlayToggleState,
+  PlayToggleStateConsumer,
+  PlayToggleStateProvider,
+  PlayPopover,
+  PlayToggleButton,
 };
 
 export {
