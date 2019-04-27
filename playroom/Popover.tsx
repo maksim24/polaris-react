@@ -4,22 +4,42 @@ import {ReactComponent} from '@shopify/react-utilities/types';
 import compose from '@shopify/react-compose';
 
 import {WithContextTypes} from '../src/types';
-import {withContext, Popover, PopoverProps} from '../src';
+import {withContext, Popover, PopoverProps, ButtonProps} from '../src';
 import {Omit, ToggleStateContext} from './types';
 
 import {PlayToggleStateConsumer} from './ToggleState';
+import PlayToggleButton from './ToggleButton';
 
-interface PlayPopoverProps extends Omit<PopoverProps, 'active' | 'onClose'> {}
+interface PlayPopoverActivatorProps
+  extends Omit<ButtonProps, 'children' | 'onClick'> {
+  content: string;
+}
+
+interface PlayPopoverProps
+  extends Omit<PopoverProps, 'active' | 'onClose' | 'activator'> {
+  activator: PlayPopoverActivatorProps;
+}
+
 type ComposedPlayPopoverProps = WithContextTypes<ToggleStateContext> &
   PlayPopoverProps;
 
 function PlayPopover(props: ComposedPlayPopoverProps) {
   const {
     context: {active, toggleState},
-    ...rest
+    activator: {content, ...restOfActivatorProps},
+    ...restOfPopoverProps
   } = props;
 
-  return <Popover active={active} onClose={toggleState} {...rest} />;
+  return (
+    <Popover
+      activator={
+        <PlayToggleButton {...restOfActivatorProps}>{content}</PlayToggleButton>
+      }
+      active={active}
+      onClose={toggleState}
+      {...restOfPopoverProps}
+    />
+  );
 }
 
 export default compose<PlayPopoverProps>(

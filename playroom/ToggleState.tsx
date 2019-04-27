@@ -26,7 +26,7 @@ export default class PlayToggleState extends React.PureComponent<
     );
   }
 
-  toggleState = () => {
+  private toggleState = () => {
     const {active} = this.state;
     this.setState({active: !active});
   };

@@ -10,6 +10,7 @@ import {PlayToggleStateConsumer} from './ToggleState';
 import {Omit, ToggleStateContext} from './types';
 
 interface PlayToggleButtonProps extends Omit<ButtonProps, 'onClick'> {}
+
 type ComposedPlayToggleButtonProps = WithContextTypes<ToggleStateContext> &
   PlayToggleButtonProps;
 
