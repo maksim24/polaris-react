@@ -1,4 +1,3 @@
-import {GamesConsoleMajorMonotone} from '@shopify/polaris-icons';
 import {TabDescriptor} from './types';
 
 export function getVisibleAndHiddenTabIndices(

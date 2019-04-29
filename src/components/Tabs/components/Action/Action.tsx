@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CaretDownMinor} from '@shopify/polaris-icons';
+import {classNames} from '@shopify/react-utilities';
 import {IconableAction, DisableableAction} from '../../../../../types';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import Icon from '../../../Icon';
@@ -8,7 +8,6 @@ import styles from './Action.scss';
 
 export interface Props {
   children?: string;
-  disclosure?: boolean;
   url?: IconableAction['url'];
   external?: IconableAction['external'];
   icon?: IconableAction['icon'];
@@ -21,27 +20,17 @@ export default function Action({
   icon,
   url,
   external,
-  disclosure,
   onAction,
   children,
   accessibilityLabel,
   disabled,
 }: Props) {
-  const disclosureIconMarkup = disclosure && (
-    <span className={styles.ActionIcon}>
-      <Icon source={CaretDownMinor} />
-    </span>
-  );
-
   const contentMarkup = icon ? (
     <span className={styles.ActionIcon}>
       <Icon source={icon} />
     </span>
   ) : (
-    <span className={styles.ActionContent}>
-      {children}
-      {disclosureIconMarkup}
-    </span>
+    <span className={styles.ActionContent}>{children}</span>
   );
 
   if (url) {
@@ -69,6 +58,7 @@ export default function Action({
       onMouseUp={handleMouseUpByBlurring}
       aria-label={accessibilityLabel}
       type="button"
+      disabled={disabled}
     >
       {contentMarkup}
     </button>

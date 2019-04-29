@@ -2,7 +2,7 @@ import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
-import {IconableAction} from '../../../types';
+import {IconableAction, DisableableAction} from '../../../types';
 import Icon from '../Icon';
 import Popover from '../Popover';
 
@@ -20,6 +20,8 @@ import {
 
 import styles from './Tabs.scss';
 
+export interface Action extends IconableAction, DisableableAction {}
+
 export interface Props {
   /** Content to display in tabs */
   children?: React.ReactNode;
@@ -30,7 +32,7 @@ export interface Props {
   /** Fit tabs to container */
   fitted?: boolean;
   /** Collection of secondary actions */
-  action?: IconableAction[];
+  action?: Action;
   /** Callback when tab is selected */
   onSelect?(selectedTabIndex: number): void;
 }
@@ -330,13 +332,17 @@ export default class Tabs extends React.PureComponent<Props, State> {
   };
 
   private renderAction = () => {
-    const {action = []} = this.props;
+    const {action = {}} = this.props;
 
-    if (action.length === 0) {
+    if (!action) {
       return null;
     }
 
-    const renderActionMarkup = action.length > 0 ? actionFrom(action) : null;
+    const renderActionMarkup = action ? (
+      <div key={`Action-${action.content}`}>
+        <Action {...action}>{action.content}</Action>
+      </div>
+    ) : null;
 
     return <span>{renderActionMarkup}</span>;
   };
@@ -353,14 +359,4 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     event.preventDefault();
     event.stopPropagation();
   }
-}
-
-function actionFrom(
-  actions: IconableAction[] = [],
-): ReadonlyArray<JSX.Element> {
-  return actions.map(({content, ...action}, index) => (
-    <div key={`Action-${content || index}`}>
-      <Action {...action}>{content}</Action>
-    </div>
-  ));
 }

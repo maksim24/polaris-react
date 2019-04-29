@@ -4,7 +4,6 @@ $difference-between-touch-area-and-backdrop: control-height() -
 .Action {
   @include unstyled-button;
   @include text-style-body;
-  @include recolor-icon(color('ink', 'lighter'));
   height: 100%;
   background-color: transparent;
   cursor: pointer;
@@ -12,12 +11,11 @@ $difference-between-touch-area-and-backdrop: control-height() -
   outline: none;
   text-align: center;
   text-decoration: none;
+  color: color('ink', 'light');
 
   &:hover,
-  &:active,
-  &:focus,
-  &:visited {
-    color: color('blue', 'dark');
+  &:active {
+    color: color('ink');
 
     .ActionIcon {
       @include recolor-icon(color('ink'), color('white'));
