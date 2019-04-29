@@ -334,14 +334,8 @@ export default class Tabs extends React.PureComponent<Props, State> {
   private renderAction = () => {
     const {action = {}} = this.props;
 
-    if (!action) {
-      return null;
-    }
-
     const renderActionMarkup = action ? (
-      <div key={`Action-${action.content}`}>
-        <Action {...action}>{action.content}</Action>
-      </div>
+      <Action {...action}>{action.content}</Action>
     ) : null;
 
     return <span>{renderActionMarkup}</span>;

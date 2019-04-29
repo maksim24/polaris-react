@@ -165,6 +165,7 @@ $action-horizontal-padding: (1.5 * spacing(tight));
   align-items: center;
   justify-content: flex-end;
   flex: 1;
+  padding: 0 spacing();
 }
 
 .DisclosureActivator {
