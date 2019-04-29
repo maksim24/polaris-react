@@ -46,7 +46,6 @@ $difference-between-touch-area-and-backdrop: control-height() -
 
 .ActionIcon {
   @include recolor-icon(color('ink', 'lighter'), color('white'));
-
 }
 
 .Action-outline {
