@@ -2,7 +2,7 @@ import * as React from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import {classNames} from '@shopify/react-utilities/styles';
 import {noop} from '@shopify/javascript-utilities/other';
-import {IconableAction, DisableableAction} from '../../../types';
+import {IconableAction, DisableableAction} from '../../types';
 import Icon from '../Icon';
 import Popover from '../Popover';
 
