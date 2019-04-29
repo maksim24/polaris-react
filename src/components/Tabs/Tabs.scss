@@ -80,7 +80,6 @@ $action-horizontal-padding: (1.5 * spacing(tight));
   }
 
   &.Tab-selected {
-
     // stylelint-disable-next-line selector-max-class
     .Title {
       border-bottom: border-width(thicker) solid color('indigo');

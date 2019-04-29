@@ -1,4 +1,5 @@
-$difference-between-touch-area-and-backdrop: control-height() - control-slim-height();
+$difference-between-touch-area-and-backdrop: control-height() -
+  control-slim-height();
 
 .Action {
   @include unstyled-button;
