@@ -35,6 +35,7 @@ Upgraded Storybook to v5 ([#1140](https://github.com/Shopify/polaris-react/pull/
 
 ### Dependency upgrades
 
+- Update most devDependencies ([#1327](https://github.com/Shopify/polaris-react/pull/1327))
 - Upgraded Polaris icons to include the full icon set ([#1284](https://github.com/Shopify/polaris-react/pull/1284))
 
 ### Code quality
